@@ -201,7 +201,7 @@ function WebGLRenderer( parameters = {} ) {
 	try {
 
 		const contextAttributes = {
-			alpha: _alpha,
+			alpha: true,
 			depth: _depth,
 			stencil: _stencil,
 			antialias: _antialias,
@@ -210,6 +210,8 @@ function WebGLRenderer( parameters = {} ) {
 			powerPreference: _powerPreference,
 			failIfMajorPerformanceCaveat: _failIfMajorPerformanceCaveat
 		};
+
+		if ( _alpha === false ) _canvas.style.background = '#000';
 
 		// OffscreenCanvas does not have setAttribute, see #22811
 		if ( 'setAttribute' in _canvas ) _canvas.setAttribute( 'data-engine', `three.js r${REVISION}` );
