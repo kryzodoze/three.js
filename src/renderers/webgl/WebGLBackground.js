@@ -7,7 +7,7 @@ import { Mesh } from '../../objects/Mesh.js';
 import { ShaderLib } from '../shaders/ShaderLib.js';
 import { cloneUniforms } from '../shaders/UniformsUtils.js';
 
-function WebGLBackground( renderer, cubemaps, state, objects, premultipliedAlpha ) {
+function WebGLBackground( renderer, cubemaps, state, objects, useAlpha, premultipliedAlpha ) {
 
 	const clearColor = new Color( 0x000000 );
 	let clearAlpha = 0;
@@ -186,7 +186,7 @@ function WebGLBackground( renderer, cubemaps, state, objects, premultipliedAlpha
 
 	function setClear( color, alpha ) {
 
-		state.buffers.color.setClear( color.r, color.g, color.b, alpha, premultipliedAlpha );
+		state.buffers.color.setClear( color.r, color.g, color.b, useAlpha ? alpha : 1.0, premultipliedAlpha );
 
 	}
 
